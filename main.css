@@ -46,3 +46,8 @@ footer {
     color: white;
     padding: 15px;
 }
+
+.nick {
+    -webkit-text-stroke: 1px #333;
+    text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
