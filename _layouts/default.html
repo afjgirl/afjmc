@@ -129,13 +129,15 @@
     </nav>
     <script>
         $(function() {
-            var pgurl = window.location.href.substr(window.location.href
-                .lastIndexOf("/") + 1);
-            $("#nav ul li a").each(function() {
-                if ($(this).attr("href") == pgurl || $(this).attr("href") == '')
-                    $(this).addClass("active");
+            var current = location.pathname;
+            $('#nav li a').each(function() {
+                var $this = $(this);
+                // if the current path is like this link, make it active
+                if ($this.attr('href').indexOf(current) !== -1) {
+                    $this.addClass('active');
+                }
             })
-        });
+        })
     </script>
     <a href="#" class="scrollToTop"></a>
     <script>
