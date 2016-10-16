@@ -1,69 +1,72 @@
----
-layout: default
-title: Home
----
-    <div class="jumbotron" style="text-align:center">
-        <h1 class="display-1">AFJ MC</h1>
-        <p style="padding: 0 30px">A simplistic minecraft server designed for all players.</p>
-        <div class="container">
-            <button data-clipboard-text="play.afjmcservers.com" type="button" class="btn btn-primary" id="btn" data-trigger="manual">play.afjmcservers.com <span class="badge">1.10</span></button><br>
-            <small>click to copy ip</small>
+--- layout: default title: Home ---
+<div class="jumbotron" style="text-align:center">
+    <h1 class="display-1">AFJ MC</h1>
+    <p style="padding: 0 30px">A simplistic minecraft server designed for all players.</p>
+    <div class="container">
+        <button data-clipboard-text="play.afjmcservers.com" type="button" class="btn btn-primary" id="btn" data-trigger="manual">play.afjmcservers.com <span class="badge">1.10</span></button><br>
+        <small>click to copy ip</small>
+    </div>
+</div>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div>
+            <h1>Welcome</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur
+                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <hr>
+            <h3>Test</h3>
+            <p>Lorem ipsum...</p>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- mc banner -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7790158768946928" data-ad-slot="7047491496" data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
-    <div class="container-fluid text-center">
-        <div class="row content">
-            <div class="col-sm-8 text-left">
-                <h1>Welcome</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur
-                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <hr>
-                <h3>Test</h3>
-                <p>Lorem ipsum...</p>
-            </div>
-        </div>
-    </div>
-    </div>
-    <script src="/resources/clipboard.min.js"></script>
-    <script>
-        var clipboard = new Clipboard('.btn');
-        clipboard.on('success', function(e) {
-            e.clearSelection();
-            console.info('Action:', e.action);
-            console.info('Text:', e.text);
-            console.info('Trigger:', e.trigger);
-            showTooltip(e.trigger, 'Copied!');
+</div>
+</div>
+<script src="/resources/clipboard.min.js"></script>
+<script>
+    var clipboard = new Clipboard('.btn');
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        showTooltip(e.trigger, 'Copied!');
+    });
+    clipboard.on('error', function(e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        showTooltip(e.trigger, fallbackMessage(e.action));
+    });
+</script>
+<script>
+    var btns = document.querySelectorAll('.btn');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('mouseleave', function(e) {
+            $('#btn').tooltip('hide');
         });
-        clipboard.on('error', function(e) {
-            console.error('Action:', e.action);
-            console.error('Trigger:', e.trigger);
-            showTooltip(e.trigger, fallbackMessage(e.action));
-        });
-    </script>
-    <script>
-        var btns = document.querySelectorAll('.btn');
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener('mouseleave', function(e) {
-                $('#btn').tooltip('hide');
-            });
-        }
+    }
 
-        function showTooltip(elem, msg) {
-            elem.setAttribute('data-toggle', 'tooltip')
-            elem.setAttribute('title', msg);
-            $('#btn').tooltip('show');
-        }
+    function showTooltip(elem, msg) {
+        elem.setAttribute('data-toggle', 'tooltip')
+        elem.setAttribute('title', msg);
+        $('#btn').tooltip('show');
+    }
 
-        function fallbackMessage(action) {
-            var actionMsg = '';
-            var actionKey = (action === 'cut' ? 'X' : 'C');
-            if (/iPhone|iPad/i.test(navigator.userAgent)) {
-                actionMsg = 'No support :(';
-            } else if (/Mac/i.test(navigator.userAgent)) {
-                actionMsg = 'Press ⌘-' + actionKey + ' to ' + action;
-            } else {
-                actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action;
-            }
-            return actionMsg;
+    function fallbackMessage(action) {
+        var actionMsg = '';
+        var actionKey = (action === 'cut' ? 'X' : 'C');
+        if (/iPhone|iPad/i.test(navigator.userAgent)) {
+            actionMsg = 'No support :(';
+        } else if (/Mac/i.test(navigator.userAgent)) {
+            actionMsg = 'Press ⌘-' + actionKey + ' to ' + action;
+        } else {
+            actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action;
         }
-    </script>
+        return actionMsg;
+    }
+</script>
