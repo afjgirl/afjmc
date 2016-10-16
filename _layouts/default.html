@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>AFJ MC - {{ page.title }}</title>
     <meta charset="utf-8">
@@ -8,7 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/main.css">
-    <script src="/resources/nav.js"></script>
     <link rel="apple-touch-icon" sizes="57x57" href="/resources/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/resources/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/resources/favicon/apple-icon-72x72.png">
@@ -27,6 +27,7 @@
     <meta name="msapplication-TileImage" content="/resources/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
+
 <body>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -126,9 +127,40 @@
             </div>
         </div>
     </nav>
+    <script>
+        $(function() {
+            var pgurl = window.location.href.substr(window.location.href
+                .lastIndexOf("/") + 1);
+            $("#nav ul li a").each(function() {
+                if ($(this).attr("href") == pgurl || $(this).attr("href") == '')
+                    $(this).addClass("active");
+            })
+        });
+    </script>
+    <a href="#" class="scrollToTop"></a>
+    <script>
+        $(document).ready(function() {
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollToTop').fadeIn();
+                } else {
+                    $('.scrollToTop').fadeOut();
+                }
+            });
+            //Click event to scroll to top
+            $('.scrollToTop').click(function() {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 800);
+                return false;
+            });
+        });
+    </script>
     {{ content }}
     <footer class="container-fluid text-center">
         <p>AFJ MC © 2013-2016</p>
     </footer>
 </body>
+
 </html>
